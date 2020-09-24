@@ -10,11 +10,12 @@ import java.util.*;
 /**
  * Soccer player database -- presently, all dummied up
  *
- * @author *** put your name here ***
- * @version *** put date of completion here ***
+ * @author *** gabby marshak ***
+ * @version *** 9/24/20 ***
  *
  */
 public class SoccerDatabase implements SoccerDB {
+    private Hashtable<String, SoccerPlayer> data = new Hashtable();
 
     /**
      * add a player
@@ -24,7 +25,15 @@ public class SoccerDatabase implements SoccerDB {
     @Override
     public boolean addPlayer(String firstName, String lastName,
                              int uniformNumber, String teamName) {
-        return false;
+        String key = firstName + "##" + lastName;
+        if(data.containsKey(key)){
+            return false;
+        }else{
+            //create new soccerplayer to put into table
+            SoccerPlayer newPlayer = new SoccerPlayer(firstName, lastName, uniformNumber, teamName);
+            data.put(key, newPlayer);
+            return true;
+        }
     }
 
     /**
