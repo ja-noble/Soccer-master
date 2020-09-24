@@ -43,6 +43,8 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public boolean removePlayer(String firstName, String lastName) {
+
+
         return false;
     }
 
@@ -53,7 +55,10 @@ public class SoccerDatabase implements SoccerDB {
      */
     @Override
     public SoccerPlayer getPlayer(String firstName, String lastName) {
-        return null;
+        String key = firstName + "##" + lastName;
+        SoccerPlayer player = data.get(key);
+
+        return player;
     }
 
     /**
